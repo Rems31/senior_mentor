@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   # Afficher une offer
+  get "offers", to: "offers#index"
   get "offers/:id", to: "offers#show", as: :offer
   # Routes user pour faire réservation
   get "bookings/:id/payment", to: "payment#new", as: :new_payment

@@ -1,0 +1,8 @@
+<%= image_tag @offer.photo_url ""%>
+<h2><%= @offer.name %></h2>
+<p><%= @offer.offer_type %></p>
+<p><%= @offer.description %></p>
+<p><%= @offer.price %></p>
+<p><%= @offer.area %></p>
+
+<%= link_to "Back to offers", offers_path%>
