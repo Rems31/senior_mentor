@@ -1,0 +1,8 @@
+<h1>Réservation pour <%= @booking.offer.name %></h1>
+<p>Date : <%= @booking.date %></p>
+<p>Statut : <%= @booking.status %></p>
+
+<% if current_user == @booking.user %>
+  <%= link_to "Modifier", edit_booking_path(@booking), class: "btn btn-warning" %>
+  <%= link_to "Annuler", booking_path(@booking), method: :delete, data: { confirm: "Annuler cette réservation ?" }, class: "btn btn-danger" %>
+<% end %>
