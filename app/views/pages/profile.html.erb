@@ -1,0 +1,15 @@
+<h1>My profile</h1>
+
+<h3><%= @user.first_name @user.last_name%></h3>
+
+<h2>My bookings</h2>
+<% @bookings.each do |booking| %>
+  <p><%= link_to "#{booking.offer.name} #{booking.offer.offer_type} #{booking.offer.price}", booking_path(booking) %></p>
+<% end %>
+
+<h2>My offers</h2>
+<% @offers.each do |offer| %>
+  <p><%= link_to offer.name, offer_path(offer) %></p>
+<% end %>
+
+<%= link_to "Back", offers_path, class:"btn btn-primary" %>
