@@ -10,6 +10,8 @@ class BookingsController < ApplicationController
     @offer = Offer.find(params[:offer_id])
     @booking = Booking.new(user: current_user, offer: @offer, status: "pending", date: params[:booking][:date])
 
-    if @booking.save
-      redirect_to booking_path(@booking), 
+    # if @booking.save
+    #   redirect_to booking_path(@booking)
+    # end
+  end
 end
