@@ -1,6 +1,17 @@
-<h1>Modifier la réservation</h1>
-<%= form_with model: @booking, local: true do |form| %>
-  <%= form.label :date, "Date de réservation" %>
-  <%= form.date_field :date %>
-  <%= form.submit "Mettre à jour", class: "btn btn-primary" %>
+<h1>Modify booking</h1>
+
+<%= simple_form_for @booking, url: booking_path(@booking), method: :patch do |f| %>
+  <div>
+    <%= f.input :status, collection: ["pending", "accepted", "declined"], label: "Booking status" %>
+  </div>
+
+  <div>
+   <%= f.input :date, as: :date, label: "Booking date" %>
+  </div>
+
+  <div>
+    <%= f.submit "Update", class: "btn btn-primary" %>
+  </div>
 <% end %>
+
+<%= link_to "Cancel", booking_path(@booking), class: "btn btn-secondary" %>
