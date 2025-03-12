@@ -1,4 +1,5 @@
-<%= image_tag @offer.photo_url ""%>
+
+<%= image_tag(@offer.photo_url, height: "100px", width: "100px", style: "border-radius: 10px") %>
 <h2><%= @offer.name %></h2>
 <p><%= @offer.offer_type %></p>
 <p><%= @offer.description %></p>
@@ -6,3 +7,8 @@
 <p><%= @offer.area %></p>
 
 <%= link_to "Back to offers", offers_path%>
+<%= link_to "edit offer", edit_offer_path(@offer) %>
+<%= link_to "Delete",
+  offer_path(@offer),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%>
