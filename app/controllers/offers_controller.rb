@@ -1,5 +1,5 @@
 class OffersController < ApplicationController
-  before_action :set_offer, only: %i[delete edit show]
+  before_action :set_offer, only: %i[update destroy edit show]
   skip_before_action :authenticate_user!, only: %i[show index]
 
   def index
@@ -16,7 +16,7 @@ class OffersController < ApplicationController
     @offer = Offer.new(offer_params)
     @offer.user = current_user
     if @offer.save!
-      redirect_to offers_path(@offer)
+      redirect_to offers_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -25,9 +25,9 @@ class OffersController < ApplicationController
   def edit; end
 
   def update
-    @offer = Offer.update(offer_params)
-    if @offer.update
-      redirect_to offers_path(@offer)
+    @offer.update(offer_params)
+    if @offer.update(offer_params)
+      redirect_to offer_path(@offer)
     else
       render :edit, status: :unprocessable_entity
     end
