@@ -11,15 +11,15 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   # Afficher une offer
-  get "offers/:id", to: "offers#show", as: :offer
+  get "offers", to: "offers#index"
   # Routes user pour faire réservation
-  get "bookings/:id/payment", to: "payment#new", as: :new_payment
+  get "bookings/:id/payment/new", to: "payment#new", as: :new_payment
   post "bookings/:id/payment", to: "payment#create"
   get "bookings/:id", to: "bookings#show"
 
   # Routes user pour créer modifier supprimer une offer
   get "offers/new", to: "offers#new", as: :new_offer
-  post "offers/new", to: "offers#create"
+  post "offers", to: "offers#create"
   get "offers/:id/edit", to: "offers#edit", as: :edit_offer
   patch "offers/:id", to: "offers#update"
   delete "offers/:id", to: "offers#destroy"
@@ -28,4 +28,5 @@ Rails.application.routes.draw do
   patch "bookings/:id", to: "bookings#update"
   # Afficher le profile
   get "profile", to: "pages#profile"
+  get "offers/:id", to: "offers#show", as: :offer
 end
