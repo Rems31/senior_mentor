@@ -1,0 +1,12 @@
+<%= simple_form_for(@offer) do |f| %>
+
+  <%= f.input :name %>
+  <%= f.input :offer_type, collection: ["cooking", "bakery", "manual activities", "culture", "gardening"] %>
+    <%= f.input :description %>
+    <%= f.input :price %>
+    <%= f.input :area %>
+    <%= f.input :photo_url %>
+    <%= f.button :submit %>
+<% end %>
+
+<%= link_to "Cancel", offers_path%>
