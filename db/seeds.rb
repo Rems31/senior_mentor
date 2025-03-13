@@ -14,9 +14,9 @@ puts "Offers destroyed"
 User.destroy_all
 puts "Users destroyed"
 
-user1 = User.create!(email: "mario@gmail.com", password: "abcdefg", photo: "Pacôme_Saint_Gilles.png")
-user2 = User.create!(email: "luigi@gmail.com", password: "abcdefg", photo: "Pacôme_Saint_Gilles.png")
-user3 = User.create!(email: "peach@gmail.com", password: "abcdefg", photo: "Pacôme_Saint_Gilles.png")
+user1 = User.create!(email: "mario@gmail.com", password: "abcdefg", photo: "Pacome_Saint_Gilles.png")
+user2 = User.create!(email: "luigi@gmail.com", password: "abcdefg", photo: "Pacome_Saint_Gilles.png")
+user3 = User.create!(email: "peach@gmail.com", password: "abcdefg", photo: "Pacome_Saint_Gilles.png")
 
 Offer.create!(user: user1, name: "Marie Dubois", offer_type: "gardening", description: "Passionate gardener with a love for flowers", area: "Nantes, France", price: 50, photo_url: "Marie_gardening.jpg")
 Offer.create!(user: user2, name: "Jean Lefèvre", offer_type: "manual activities", description: "Skilled carpenter crafting beautiful furniture", area: "Lyon, France", price: 50, photo_url: "Jean_manual_activities.jpg")
