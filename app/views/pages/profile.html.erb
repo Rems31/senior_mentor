@@ -1,17 +1,36 @@
 <h1>My profile</h1>
 
-<%= image_tag(current_user.photo, style:"height:240px; width:240px; border-radius:50%", class:"mx-auto d-block") %>
+<% if current_user.photo.attached? %>
+  <%= image_tag(current_user.photo, style:"height:240px; width:240px; border-radius:50%", class:"mx-auto d-block") %>
+<% else %>
+  <%= image_tag(asset_path('default_avatar.png'), style:"height:240px; width:240px; border-radius:50%", class:"mx-auto d-block") %> <!-- Image par défaut -->
+<% end %>
 
 <h3><%= current_user.email %></h3>
 
 <h2>My bookings</h2>
-<% @my_bookings.each do |booking| %>
-  <p><%= link_to "#{booking.offer.name} #{booking.offer.offer_type} #{booking.offer.price}", booking_path(booking) %></p>
+<% @my_bookings.group_by(&:offer_id).each do |offer_id, bookings| %>
+  <% bookings.each do |booking| %>
+    <p>
+      <%= link_to "#{booking.offer.name} - #{booking.offer.offer_type} - #{booking.offer.price}", offer_path(booking.offer) %>
+      <span>Status: <%= booking.status.capitalize %></span>
+    </p>
+  <% end %>
 <% end %>
 
-<h2>My offers</h2>
+
+<h2>Requests for my offers</h2>
 <% @my_offers.each do |offer| %>
-  <p><%= link_to offer.name, offer_path(offer) %></p>
+  <% offer.bookings.uniq.each do |booking| %>
+    <p>
+      <strong><%= booking.user.email %></strong> a réservé "<%= offer.name %>" pour le <%= booking.date %>.
+      <span>Status: <%= booking.status.capitalize %></span>
+    </p>
+    <% if booking.status == "pending" %>
+      <%= button_to "Accept", booking_path(booking, status: "accepted"), method: :patch, class: "btn btn-success" %>
+      <%= button_to "Reject", booking_path(booking, status: "rejected"), method: :patch, class: "btn btn-danger" %>
+    <% end %>
+  <% end %>
 <% end %>
 
 <%= link_to "Back", offers_path, class:"btn btn-primary" %>

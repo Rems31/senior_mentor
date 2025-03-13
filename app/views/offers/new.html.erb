@@ -1,12 +1,11 @@
 <%= simple_form_for(@offer) do |f| %>
-
-  <%= f.input :name %>
-  <%= f.input :offer_type, collection: ["cooking", "bakery", "manual activities", "culture", "gardening"] %>
-    <%= f.input :description %>
-    <%= f.input :price %>
-    <%= f.input :area %>
-    <%= f.input :photo_url %>
-    <%= f.button :submit %>
+  <%= f.input :name, placeholder: "Enter the offer name" %>
+  <%= f.input :offer_type, collection: ["cooking", "bakery", "manual activities", "culture", "gardening"], prompt: "Select an offer type" %>
+  <%= f.input :description, placeholder: "Describe your offer" %>
+  <%= f.input :price, placeholder: "Enter the price (€)" %>
+  <%= f.input :area, placeholder: "Enter the area (e.g. Paris, Lyon...)" %>
+  <%= f.input :photo, as: :file %>
+  <%= f.button :submit, "Create Offer" %>
 <% end %>
 
-<%= link_to "Cancel", offers_path%>
+<%= link_to "Cancel", offers_path, class: "btn btn-secondary" %>

@@ -1,6 +1,7 @@
 class Offer < ApplicationRecord
   has_many :bookings
   belongs_to :user
+  has_one_attached :photo
 
   validates :name, presence: true
   validates :offer_type, presence: true, inclusion: { in: ["bakery", "gardening", "manual activities", "cooking", "culture"] }

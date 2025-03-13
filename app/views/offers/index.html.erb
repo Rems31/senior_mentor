@@ -1,16 +1,21 @@
-<h1> Offers </h1>
+<h1>Offers</h1>
 
 <ul>
-  <div>
-    <% @offers.each do |offer| %>
-    <li><%= image_tag(offer.photo_url, style:"height:248px; width:248px; border-radius:10px") %>
-    <%= offer.name %>
-    <%= offer.offer_type %>
-    <%= offer.area %>
-    <%= offer.price %>
-    <%= link_to "offer details", offer_path(offer)%></li>
-    <% end %>
-  </div>
+  <% @offers.each do |offer| %>
+    <div>
+      <% if offer.photo.attached? %>
+        <%= image_tag(offer.photo, style: "height:248px; width:248px; border-radius:10px") %>
+      <% else %>
+        <%= image_tag(offer.photo_url, style: "height:248px; width:248px; border-radius:10px") if offer.photo_url.present? %>
+      <% end %>
+
+      <p><%= offer.name %></p>
+      <p><%= offer.offer_type %></p>
+      <p><%= offer.area %></p>
+
+      <%= link_to 'See more', offer_path(offer), class: 'btn btn-primary' %>
+    </div>
+  <% end %>
 </ul>
 
 <%= link_to "Add an offer", new_offer_path %>
