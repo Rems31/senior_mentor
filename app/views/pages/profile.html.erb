@@ -1,8 +1,8 @@
 <h1>My profile</h1>
 
-<%= image_tag(@user.photo_url, style:"height:100px; width:100px; border-radius:50px", class:"mx-auto d-block") %>
+<%= image_tag(current_user.photo, style:"height:240px; width:240px; border-radius:50%", class:"mx-auto d-block") %>
 
-<h3><%= @user.first_name @user.last_name%></h3>
+<h3><%= current_user.email %></h3>
 
 <h2>My bookings</h2>
 <% @my_bookings.each do |booking| %>
