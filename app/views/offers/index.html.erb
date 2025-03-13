@@ -1,10 +1,16 @@
 <h1> Offers </h1>
 
 <ul>
-  <% @offers.each do |offer| %>
-  <li><%= offer.name %>
-  <%= link_to "offer details", offer_path(offer)%></li>
-  <% end %>
+  <div>
+    <% @offers.each do |offer| %>
+    <li><%= image_tag(offer.photo_url, style:"height:248px; width:248px; border-radius:10px") %>
+    <%= offer.name %>
+    <%= offer.offer_type %>
+    <%= offer.area %>
+    <%= offer.price %>
+    <%= link_to "offer details", offer_path(offer)%></li>
+    <% end %>
+  </div>
 </ul>
 
 <%= link_to "Add an offer", new_offer_path %>

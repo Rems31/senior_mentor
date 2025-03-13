@@ -12,7 +12,7 @@ puts "Offers destroyed"
 User.destroy_all
 puts "Users destroyed"
 
-user1 = User.create!(email: "mario@gmail.com", password: "abcdefg")
+user1 = User.create!(email: "mario@gmail.com", password: "abcdefg", photo: "Pacôme_Saint_Gilles.png")
 user2 = User.create!(email: "luigi@gmail.com", password: "abcdefg")
 user3 = User.create!(email: "peach@gmail.com", password: "abcdefg")
 
