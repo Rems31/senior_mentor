@@ -12,12 +12,15 @@ class BookingsController < ApplicationController
 
   def create
     @offer = Offer.find(params[:offer_id])
-    @booking = Booking.new(user: current_user, offer: @offer, status: "pending", date: params[:booking][:date])
+    @booking = Booking.new(booking_params)
+    @booking.user = current_user
+    @booking.offer = @offer
+    @booking.status = "pending"
 
     if @booking.save
       redirect_to booking_path(@booking), notice: "Booking made with success."
     else
-      render "offers/show"
+      render "offers/show", status: :unprocessable_entity
     end
   end
 
@@ -28,13 +31,13 @@ class BookingsController < ApplicationController
     if @booking.update(booking_params)
       redirect_to booking_path(@booking), notice: "Booking updated."
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @booking.destroy
-    redirect_to root_path, notice: "Booking Cancelled"
+    redirect_to bookings_path, status: :see_other, notice: "Booking Cancelled"
   end
 
   private
