@@ -1,21 +1,26 @@
-<h1>Offers</h1>
 
-<ul>
+<nav class="navbar navbar-light bg-light">
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</nav>
+
+<div class="cards-container mt-5">
   <% @offers.each do |offer| %>
-    <div>
-      <% if offer.photo.attached? %>
+    <div class="card">
+      <div class="container">
+        <% if offer.photo.attached? %>
         <%= image_tag(offer.photo, style: "height:248px; width:248px; border-radius:10px") %>
       <% else %>
         <%= image_tag(offer.photo_url, style: "height:248px; width:248px; border-radius:10px") if offer.photo_url.present? %>
-      <% end %>
-
-      <p><%= offer.name %></p>
-      <p><%= offer.offer_type %></p>
-      <p><%= offer.area %></p>
-
-      <%= link_to 'See more', offer_path(offer), class: 'btn btn-primary' %>
+        <h3><b><%= offer.name %></b></h3>
+        <p><%= offer.offer_type %></p>
+        <p><%= offer.area %></p>
+        <h3><b><%= offer.price %>€</b></h3>
+      </div>
     </div>
   <% end %>
-</ul>
+</div>
 
 <%= link_to "Add an offer", new_offer_path %>
