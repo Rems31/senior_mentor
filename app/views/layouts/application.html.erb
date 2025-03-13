@@ -11,7 +11,7 @@
 
   <body class="background-gradient">
     <div class="container">
-      
+
         <% if user_signed_in? %>
           <%= current_user.email %>
           <%= link_to "Sign Out", destroy_user_session_path, data: { turbo_method: :delete } %>
@@ -37,7 +37,7 @@
             <a class="nav-link" href="#">Messages</a>
           </li>
           <li class="nav-item dropdown">
-            <%= image_tag(current_user.photo, style:"height:50px; width:50px; border-radius:50%", class:"mx-auto d-block") %>
+            <%# <%= image_tag(current_user.photo, style:"height:50px; width:50px; border-radius:50%", class:"mx-auto d-block") %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">Action</a>
               <a class="dropdown-item" href="#">Another action</a>
@@ -54,7 +54,7 @@
     <%= yield %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-          
+
     </div>
 
   </body>
