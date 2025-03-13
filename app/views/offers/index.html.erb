@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-light bg-light">
   <form class="form-inline">
     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -9,7 +10,10 @@
   <% @offers.each do |offer| %>
     <div class="card">
       <div class="container">
-        <%= image_tag(offer.photo_url, style:"width:100%; border-radius:10px") %>
+        <% if offer.photo.attached? %>
+        <%= image_tag(offer.photo, style: "height:248px; width:248px; border-radius:10px") %>
+      <% else %>
+        <%= image_tag(offer.photo_url, style: "height:248px; width:248px; border-radius:10px") if offer.photo_url.present? %>
         <h3><b><%= offer.name %></b></h3>
         <p><%= offer.offer_type %></p>
         <p><%= offer.area %></p>

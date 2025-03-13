@@ -29,4 +29,9 @@ Rails.application.routes.draw do
   # Afficher le profile
   get "profile", to: "pages#profile"
   get "offers/:id", to: "offers#show", as: :offer
+
+  resources :offers do
+    resources :bookings, only: [:create]
+  end
+  resources :bookings, only: %i[create update destroy]
 end
