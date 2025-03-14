@@ -16,7 +16,7 @@
     <div class="row">
       <% @offers.each do |offer| %>
         <div class="col-md-4 mb-4">
-          <%= link_to offer_path(offer) do %>
+          <%= link_to offer_path(offer), :class => "text-decoration-none" do %>
           <div class="card">
             <% if offer.photo_url.present? %>
               <%= image_tag(offer.photo_url, style: "height: 248px; width: 248px; object-fit: cover; border-radius: 10px; margin: auto") %>
