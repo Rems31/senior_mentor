@@ -1,10 +1,5 @@
+<div class="background">
 <h1>My profile</h1>
-
-<% if current_user.photo.attached? %>
-  <%= image_tag(current_user.photo, style:"height:240px; width:240px; border-radius:50%", class:"mx-auto d-block") %>
-<% else %>
-  <%= image_tag(asset_path('default_avatar.png'), style:"height:240px; width:240px; border-radius:50%", class:"mx-auto d-block") %> <!-- Image par défaut -->
-<% end %>
 
 <h3><%= current_user.email %></h3>
 
@@ -34,3 +29,4 @@
 <% end %>
 
 <%= link_to "Back", offers_path, class:"btn btn-primary" %>
+</div>

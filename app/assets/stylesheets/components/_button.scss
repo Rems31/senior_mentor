@@ -1,0 +1,84 @@
+.button {
+  font-size: 20px;
+  }
+
+.button_purple {
+  background-color: #6050EE; /* Green */
+  border: none;
+  border-radius: 50px;
+  color: white;
+  width: 210px;
+  height: 50px;
+  padding: 14px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition-duration: 0.3s;
+}
+
+.button_purple:hover {
+  background-color: #ECFD01;
+  color: black;
+}
+
+.button-container {
+  float: right;
+}
+
+.sticky-button {
+  position: sticky;
+  top: 10px; /* Il reste en haut dès qu'on dépasse cette position */
+  z-index: 1000;
+}
+
+.button_more {
+  border: 2px solid #FFFFFF;
+  border-radius: 50px;
+  color: white;
+  width: 210px;
+  height: 50px;
+  padding: 14px 32px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition-duration: 0.3s;
+  display: flex;
+  align-items: center;
+  background-color: #6050EE;
+}
+
+.button_more:hover {
+  background-color: white;
+  color: #6050EE;
+}
+
+
+.button-container-center {
+  margin-left: 43%;
+  margin-top: 5%;
+  margin-bottom: 3%;
+}
+
+
+.button_book {
+  background-color: #6050EE; /* Green */
+  border: none;
+  border-radius: 50px;
+  color: white;
+  width: 250px;
+  height: 50px;
+  padding: 14px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  transition-duration: 0.3s;
+  margin-top: 30px;
+}
+
+.button_book:hover {
+  background-color: #ECFD01;
+  color: black;
+}

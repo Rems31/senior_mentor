@@ -4,8 +4,8 @@
   background: white;
   border-radius: 17px;
   border: 2px solid #E2E2E2;
-  padding: 15px;
-  
+  display: flex;
+  flex-direction: column;
 }
 
 .card:hover {
@@ -15,5 +15,5 @@
 }
 
 .container {
-  line-height: 0.2;
+  line-height: 0.3;
 }

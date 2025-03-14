@@ -1,18 +1,24 @@
-<%= @offer.photo.attached? ? image_tag(@offer.photo, size: "248x248") : image_tag(@offer.photo_url, size: "248x248") %>
-<h2><%= @offer.name %></h2>
+<div class= "background">
+  <div class= "mb-3">
+<%= @offer.photo.attached? ? image_tag(@offer.photo, style: "height: 248px; width: 248px; object-fit: cover; border-radius: 10px; margin: auto") : image_tag(@offer.photo_url, style: "height: 248px; width: 248px; object-fit: cover; border-radius: 10px; margin: auto") %>
+</div>
+<h4><b><%= @offer.name %></b></h4>
 <p><%= @offer.offer_type %></p>
 <p><%= @offer.description %></p>
-<p><%= @offer.price %> €</p>
 <p><%= @offer.area %></p>
-
+<div class= "mb-3">
+<h4><b><%= @offer.price %> €</b></h4>
+</div>
+<div class= "mb-3">
 <%= link_to "Back to offers", offers_path %>
 <%= link_to "Edit offer", edit_offer_path(@offer) %>
 <%= link_to "Delete", offer_path(@offer), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-
+</div>
+<br>
 <hr>
 
 <% if user_signed_in? %>
-  <h3>Book this offer</h3>
+  <h4><b>Book this offer</b></h4>
   <%= form_with model: [@offer, @offer.bookings.new], url: offer_bookings_path(@offer), local: true do |f| %>
     <div>
       <%= f.label :date, "Choose a date :" %>
@@ -20,10 +26,11 @@
     </div>
 
     <div>
-      <%= f.submit "Book", class: "btn btn-primary" %>
+      <%= f.submit "Book", class: "button button_book" %>
     </div>
   <% end %>
 <% else %>
   <p>You have to be signed in.</p>
   <%= link_to "Sign in", new_user_session_path %>
 <% end %>
+</div>
