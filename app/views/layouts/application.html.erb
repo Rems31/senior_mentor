@@ -12,49 +12,39 @@
   <body class="background-gradient">
     <div class="container">
 
-        <% if user_signed_in? %>
-          <%= current_user.email %>
-          <%= link_to "Sign Out", destroy_user_session_path, data: { turbo_method: :delete } %>
-        <% else %>
-          <%= link_to "Sign In", new_user_session_path %>
-        <% end %>
 
-      <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid">
-    <a class="navbar-brand" href= "<%link_to offers_path%>">
-       <%= image_tag("logo_Senior_Mentor.png") %>
-  </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Messages</a>
-          </li>
-          <li class="nav-item dropdown">
-            <%# <%= image_tag(current_user.photo, style:"height:50px; width:50px; border-radius:50%", class:"mx-auto d-block") %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" data-turbo-method="delete" href="#">Log out</a>
-            </div>
-          </li>
-          <!--li class="nav-item"-->
-          <!--/li-->
-      </ul>
+      <nav class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+        <div class="container-fluid">
+
+
+          <%= link_to root_path, class: "navbar-brand" do %>
+            <%= image_tag("logo_Senior_Mentor.png", alt: "Senior Mentor Logo") %>
+          <% end %>
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <% if user_signed_in? %>
+        <%= link_to "Log Out", destroy_user_session_path, data: { turbo_method: :delete }, class: "button-log-out" %>
+      <% else %>
+        <%= link_to "Log In", new_user_session_path %>
+      <% end %>
+              <%= link_to profile_path, class: "navbar-brand" do %>
+            <%= image_tag("Mario.png", alt: "Mario", style: "border-radius: 50%; height: 60px; width: 60px") %>
+          <% end %>
+          </div>
+        </div>
+      </nav>
+
+      <%= yield %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    <div class= "margin-left: 30px; mb-4 footer">
+    <%= image_tag("Logo_footer.png", alt: "Logo footer", style: "width: 150px") %>
+
     </div>
-  </div>
-</div>
-
-    <%= yield %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
     </div>
 
   </body>

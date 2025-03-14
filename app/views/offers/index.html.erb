@@ -1,27 +1,42 @@
-
-<nav class="navbar navbar-light bg-light">
-  <form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-  </form>
-</nav>
-
-<div class="cards-container mt-5">
-  <% @offers.each do |offer| %>
-    <div class="card">
-      <div class="container">
-        <% if offer.photo.attached? %>
-        <%= image_tag(offer.photo, style: "height:248px; width:248px; border-radius:10px") %>
-      <% else %>
-        <%= image_tag(offer.photo_url, style: "height:248px; width:248px; border-radius:10px") if offer.photo_url.present? %>
-        <h3><b><%= offer.name %></b></h3>
-        <p><%= offer.offer_type %></p>
-        <p><%= offer.area %></p>
-        <h3><b><%= offer.price %>€</b></h3>
-      </div>
+<div class="container">
+  <div class="wrap">
+    <div class="search">
+        <input type="text" class="searchTerm" placeholder="What are you looking for?">
+        <button type="submit" class="searchButton">
+          <i class="fa fa-search"></i>
+      </button>
     </div>
-  <% end %>
-  <% end %>
-</div>
+  </div>
 
-<%= link_to "Add an offer", new_offer_path %>
+  <div class="button-container sticky-button">
+    <%= link_to "+ Add a mentor", new_offer_path, class: "button button_purple" %>
+  </div>
+
+  <div class="mt-5">
+    <div class="row">
+      <% @offers.each do |offer| %>
+        <div class="col-md-4 mb-4">
+          <%= link_to offer_path(offer) do %>
+          <div class="card">
+            <% if offer.photo_url.present? %>
+              <%= image_tag(offer.photo_url, style: "height: 248px; width: 248px; object-fit: cover; border-radius: 10px; margin: auto") %>
+            <% end %>
+
+            <div class="text-left mx-3">
+              <h5><b><%= offer.name %></b></h5>
+              <p><%= offer.offer_type %></p>
+              <p><%= offer.area %></p>
+              <h5><b><%= offer.price %>€</b></h5>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+
+  <div class="button-container-center">
+    <button class= "button button_more">More mentors</button>
+  </div>
+</div>

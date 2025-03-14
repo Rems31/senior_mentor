@@ -1,11 +1,14 @@
+<div class="background">
+  <div class= "mt-4">
 <%= simple_form_for(@offer) do |f| %>
   <%= f.input :name, placeholder: "Enter the offer name" %>
   <%= f.input :offer_type, collection: ["cooking", "bakery", "manual activities", "culture", "gardening"], prompt: "Select an offer type" %>
   <%= f.input :description, placeholder: "Describe your offer" %>
   <%= f.input :price, placeholder: "Enter the price (€)" %>
   <%= f.input :area, placeholder: "Enter the area (e.g. Paris, Lyon...)" %>
-  <%= f.input :photo, as: :file %>
+  <%= f.input :photo_url, placeholder: "Enter an image URL" %>
   <%= f.button :submit, "Create Offer" %>
 <% end %>
-
+</div>
 <%= link_to "Cancel", offers_path, class: "btn btn-secondary" %>
+</div>
